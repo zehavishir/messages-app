@@ -1,0 +1,38 @@
+
+@keyframes example {
+    0% {text-shadow: 2px 2px 5px red;}
+    20% {text-shadow: 2px 2px 5px orange;}
+    40%{text-shadow: 2px 2px 5px yellow;}
+    60% {text-shadow: 2px 2px 5px green;}
+    80% {text-shadow: 2px 2px 5px blue;}
+    100% {text-shadow: 2px 2px 5px purple;}
+}
+ h2{
+     color:red;
+     animation: example 10s infinite;
+     color:black;
+     font-style: italic;
+ }
+
+ .center{
+     text-align: center;
+ }
+
+ form{
+     display: inline-block;
+ }
+
+ @keyframes newUser {
+     from{text-shadow: 2px 2px 5px gold}
+     to{text-shadow:2px 2px 5px red}
+ }
+
+ .new-user{
+    color:black;
+    animation: newUser 10s infinite;
+    size:23px;
+ }
+
+ .btn{
+    border-radius: 12px;
+}

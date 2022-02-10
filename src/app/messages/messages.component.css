@@ -1,0 +1,32 @@
+.design{
+    text-shadow:2px 2px 5px red;
+    position: relative;
+    animation: animating 4s infinite;
+    overflow:hidden;
+}
+
+@keyframes animating{
+    0% {left:0px; top:0px}
+    36% {left:50px; top:0px}
+    100%{left:0px; top:0px}
+}
+
+@keyframes colorChange{
+    from {color:red}
+    to {color:white}
+}
+
+.color-change{
+    color:red;
+    animation:colorChange 2s infinite;
+}
+
+.font-change{
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5)
+}
+.container-headline{
+    display:flex;
+    justify-content: center;
+}
+

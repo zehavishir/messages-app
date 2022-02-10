@@ -1,0 +1,19 @@
+.container{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left:26%;
+}
+
+.headline{
+    animation:headanimate 5s infinite;
+}
+
+@keyframes headanimate{
+    0%{text-shadow: 2px 2px 5px pink;}
+    50%{text-shadow: 2px 2px 5px purple}
+    100%{text-shadow: 2px 2px 5px pink}
+}
+.btn{
+    border-radius: 12px;
+}

@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="center">
+    <h2>welcome to messages app!<i class="glyphicon glyphicon-user"></i></h2>
+    <h3>please log in to see your chats!</h3>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="username">username</label>
+                    <input
+                     type="text" 
+                     class="form-control" 
+                     required 
+                     minlength="4"
+                     #name="ngModel" 
+                     ngModel 
+                     name="name">
+                     <span class="help-block" *ngIf="!name.valid">please enter a valid username!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="password">password</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    minlength="3"
+                    required 
+                    ngModel 
+                    pattern="^[0-9]*$"
+                    id="password"
+                    #password="ngModel"
+                    name="password">
+                    <span class="help-block" *ngIf="!password.valid">please enter a valid password!</span>
+                </div>
+            </div>
+            <button 
+            class="btn btn-success" 
+            type="button" 
+            [disabled]="!f.valid"
+            (click)="isClicked = !isClicked; clickAndNavigate()">
+            log in</button>
+        </div>
+    </form>
+    <p *ngIf="!this.isUserFound && isClicked">user not found. please try again.</p>
+    <p class="new-user">new here? press sign up above to begin!</p>
+</div>

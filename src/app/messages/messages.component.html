@@ -1,0 +1,27 @@
+<div class="container-headline">
+    <h4 class="font-change">start a conversation here!</h4>
+</div>
+<p class="design">your contacts:</p>
+<p *ngIf="!this.arrayUsers && !isServerLoading()" class="color-change">no users</p>
+<div *ngIf="this.arrayUsers && !isServerLoading()">
+    <ul class="list-group">
+        <a class="list-group-item"
+        *ngFor="let user of this.arrayUsers; let i=index"
+        (click)="UserSelected(i)">
+    {{user.fullName}}</a>    
+    </ul>
+    <!-- <p *ngIf="isClicked" style="text-shadow:2px 5px 5px red">your talking to</p> -->
+    <p *ngIf="isLoading">is Loading...</p>
+</div>
+<div class="container" *ngIf="currUser">
+    <div class="row">
+        <div class="col-md-6">
+            <app-first-person
+            [usernameTalking]="currUser"
+            ></app-first-person>  
+        </div>
+        <div class="col-md-6">
+            <app-second-person></app-second-person>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.btn{
+    border-radius: 12px;
+}
+
+.btn:active{
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.currUser{
+    text-shadow: 2px 5px 5px lightsalmon;
+}

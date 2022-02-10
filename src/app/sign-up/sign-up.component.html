@@ -1,0 +1,40 @@
+<div class="container">
+    <h3 class="headline">Welcome! please enter a username and a password</h3>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="name">full name</label>
+                    <input
+                     type="text" 
+                     ngModel
+                     #fullName="ngModel" 
+                     required 
+                     name="fullName"
+                     minlength="4"
+                     class="form-control" 
+                     placeholder="myUserName">
+                     <span class="help-block" *ngIf="!fullName.valid">please enter a valid username!</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="password">password</label>
+                    <input 
+                    type="text" 
+                    ngModel
+                    #password="ngModel"  
+                    required
+                    pattern="^[0-9]*$"
+                    minlength="3"
+                    name="password" class="form-control">
+                    <span class="help-block" *ngIf="!password.valid">please enter a valid password!</span>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-success" [disabled]="!f.valid"
+                    (click)="onSubmit(f)">save</button>
+            </div>
+        </div>
+    </form>
+</div>
