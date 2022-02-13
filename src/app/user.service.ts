@@ -7,7 +7,8 @@ import { Observable, Subject } from "rxjs";
 export class UserService {
     private UpdatedUsersList$: Subject<User[]>;
     isLoading: boolean;
-
+    signUpUser: User;
+    userIndex: number;
     constructor(private http: HttpClient) {
         this.UpdatedUsersList$ = new Subject<User[]>();
         this.isLoading = false;
@@ -16,18 +17,18 @@ export class UserService {
     findUser(logInUser: User, array: User[]) {
         for (let user of array) {
             if (user.fullName === logInUser.fullName && user.password === logInUser.password) {
+                this.userIndex = array.indexOf(user);
                 return true;
             }
         }
         return false;
     }
     //for the sign up component
-    addUser(user: User): Observable<{name: string}> {
+    addUser(user: User): Observable<{ name: string }> {
         return this.http.post<{ name: string }>('https://my-messages-app-f3c4a-default-rtdb.firebaseio.com/users.json',
             user)
-            
     }
-//using this method to get the users from the url
+    //using this method to get the users from the url
     private getUsers(): Observable<Object> {
         return this.http.get('https://my-messages-app-f3c4a-default-rtdb.firebaseio.com/users.json')
     }
@@ -44,7 +45,7 @@ export class UserService {
                 }
                 this.UpdatedUsersList$.next(arrayOfUsers);
             })
-            // this.isLoading = false;
+        // this.isLoading = false;
     }
 
     public GetUsersList(): Observable<User[]> {

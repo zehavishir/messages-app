@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="center">
-    <h2>welcome to messages app!<i class="glyphicon glyphicon-user"></i></h2>
+    <h2>welcome to messages app!<i class="glyphicon glyphicon-user"></i> </h2>
     <h3>please log in to see your chats!</h3>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
@@ -42,6 +42,6 @@
             log in</button>
         </div>
     </form>
-    <p *ngIf="!this.isUserFound && isClicked">user not found. please try again.</p>
+    <p *ngIf="!onSubmit(f) && isClicked">user not found. please try again.</p>
     <p class="new-user">new here? press sign up above to begin!</p>
 </div>

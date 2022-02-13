@@ -21,7 +21,6 @@ export class LogInComponent implements OnInit {
         this.newArray = users;
       });
       this.isUserFound = false;
-     
     }
 
   ngOnInit(): void {
@@ -37,11 +36,11 @@ export class LogInComponent implements OnInit {
       this.isUserFound = false;
     }
     return this.isUserFound;
+    // console.log(this.isUserFound);
   }
 
   clickAndNavigate() {
     if (this.isUserFound) {
       this.router.navigate(['/messages']);
-    }
-  }
+    }  }
 }
