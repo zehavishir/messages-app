@@ -2,16 +2,14 @@
     <h4 class="font-change">start a conversation here!</h4>
 </div>
 <p class="design">your contacts:</p>
-<p *ngIf="!this.arraySignUpUsers && !isServerLoading()" class="color-change">no users</p>
-<div *ngIf="this.arraySignUpUsers && !isServerLoading()">
+<p *ngIf="!this.currUsersArray" class="color-change">no users</p>
+<div *ngIf="this.currUsersArray">
     <ul class="list-group">
-        <ng-container *ngFor="let user of this.arraySignUpUsers; let i=index">
+        <ng-container *ngFor="let user of this.currUsersArray; let i=index">
             <a class="list-group-item"
-            *ngIf="i != this.loggedUser"
             (click)="UserSelected(i)">
         {{user.fullName}}</a>     
         </ng-container>
-        
     </ul>
     <!-- <p *ngIf="isClicked" style="text-shadow:2px 5px 5px red">your talking to</p> -->
     <p *ngIf="isLoading">is Loading...</p>

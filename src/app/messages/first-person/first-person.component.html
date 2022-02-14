@@ -1,12 +1,10 @@
 <p class="currUser">you are talking to  {{usernameTalking}}</p>
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <div class="row form-group">
-        <div class="col-xs-6">
-            <input type="text" name="firstPerson" ngModel required 
-            placeholder="enter a message" class="form-control">
-            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Send</button>
-        </div>
-        <p *ngFor="let message of array">
-           person1 sent: {{message}}</p>
+<div class="row form-group">
+    <div class="col-xs-6">
+        <input type="text" name="firstPerson" [(ngModel)]="message" required 
+        placeholder="enter a message" class="form-control">
+        <button type="submit" (click)="onSubmit()" class="btn btn-primary">Send</button>
     </div>
-</form>
+    <p *ngFor="let message of this.messagesArray">
+       person1 sent: {{message}}</p>
+</div>

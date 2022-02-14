@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { io, Socket } from 'socket.io-client';
 import { MessagesService } from 'src/app/messages.service';
 
 @Component({
@@ -8,17 +8,24 @@ import { MessagesService } from 'src/app/messages.service';
   styleUrls: ['./first-person.component.css']
 })
 export class FirstPersonComponent implements OnInit {
-  form: NgForm;
+  socket: Socket;
+  @Input('message') message: string;
   @Input() usernameTalking: string;
-  array: string[];
-  constructor(private messagesSrevice: MessagesService) { 
-    this.array = this.messagesSrevice.messagesArray1;
+  messagesArray: string[];
+
+  constructor(private messagesService: MessagesService) { 
+    this.messagesArray = this.messagesService.messagesArray1;
+    this.socket = io('http://localhost:3000');
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.socket.on('newMessage', (message: string) => {
+      //display new message;
+      this.messagesArray.push(message);
+    })
   }
 
-  onSubmit(form: NgForm) {
-    this.messagesSrevice.onSubmitFirst(form);
+  onSubmit() {
+    this.socket.emit('newMessage', this.message)
   }
 }

@@ -8,10 +8,10 @@
     100% {text-shadow: 2px 2px 5px purple;}
 }
  h2{
-     color:red;
      animation: example 10s infinite;
      color:black;
      font-style: italic;
+     text-decoration-line: underline;
  }
 
  .center{

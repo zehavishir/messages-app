@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
 import { UserService } from '../user.service';
+import { Users } from '../users';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -11,6 +12,7 @@ import { UserService } from '../user.service';
 export class SignUpComponent implements OnInit {
   form: NgForm;
   user: User;
+  usersArray = Users;
   constructor(private userService: UserService,
     private router:Router
     ) { }
@@ -21,9 +23,10 @@ export class SignUpComponent implements OnInit {
     const value = form.value;
     const newUser = {fullName: value.fullName, password: value.password}; 
     this.userService.signUpUser = newUser;
-    this.userService.addUser(newUser).subscribe((responseData)=>{
-      // console.log(responseData);
-      this.router.navigate(['/messages']); 
-    });    
+    this.userService.addUser(newUser);//adding a user to the ts array
+    this.userService.username = value.fullName;
+    console.log(this.usersArray);
+    this.router.navigate(['/messages']); 
+      
   }
 }

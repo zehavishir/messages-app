@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../interfaces/user';
 import { UserService } from '../user.service';
 import { HttpClient } from '@angular/common/http';
+import { Users } from '../users';
 
 @Component({
   selector: 'app-messages',
@@ -11,39 +12,27 @@ import { HttpClient } from '@angular/common/http';
 export class MessagesComponent implements OnInit {
   chats: string[];
   isClicked: boolean;
-  arraySignUpUsers: User[];
-  isLoading: boolean;
   currUser: string;
-  loggedUser: number;
+  signedUpUser: User;
+  currUsersArray: User[];
+  users: User[];
 
   constructor(private userService: UserService,
     private http: HttpClient) {
-      this.chats = [];
-      this.isClicked = false;
-      this.isLoading = false;
-      this.currUser = '';
-      this.loggedUser = this.userService.userIndex;
-      this.userService.GetUsersList().subscribe((users: User[]) => {
-        this.arraySignUpUsers = users;
-        console.log("arraySignUpUsers");
-        console.log(this.arraySignUpUsers);
-      });
+    this.chats = [];
+    this.isClicked = false;
+    this.currUser = '';
+    this.users = Users;
+    this.signedUpUser = this.userService.signUpUser;//the user that signed up
   }
-
   ngOnInit(): void {
-    this.userService.UpdateUserList();
-    console.log("this is the sign up user!")
-    console.log(this.userService.signUpUser);
-    console.log("this is the index of the user");
-    console.log(this.loggedUser);
+    this.currUsersArray = this.users.filter(
+      (user: User) => user.fullName != this.userService.username);
+      console.log(this.currUsersArray);
   }
 
   UserSelected(index: number) {
-    this.currUser = this.arraySignUpUsers[index].fullName;
-  }
-
-  isServerLoading(){
-    this.isLoading = this.userService.isLoading;
-    return this.isLoading;
+    this.currUser = this.currUsersArray[index].fullName;
+    console.log(this.currUser);
   }
 }
