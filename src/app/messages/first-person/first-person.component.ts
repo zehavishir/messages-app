@@ -19,6 +19,9 @@ export class FirstPersonComponent implements OnInit {
   }
 
   ngOnInit() {
+    //every time the server updates, for example recieves a new message
+    //do what's inside for example push it to the chat array
+    //the "on" recieves data from the server
     this.socket.on('newMessage', (message: string) => {
       //display new message;
       this.messagesArray.push(message);
@@ -26,6 +29,7 @@ export class FirstPersonComponent implements OnInit {
   }
 
   onSubmit() {
-    this.socket.emit('newMessage', this.message)
+    //the "emit" is for sending data back to the server
+    this.socket.emit('sendMessage', this.message);
   }
 }
