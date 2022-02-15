@@ -6,13 +6,11 @@ import { Users } from "./users";
 
 @Injectable()
 export class UserService {
-    private UpdatedUsersList$: Subject<User[]>;
     isLoading: boolean;
     signUpUser: User;
     userIndex: number;
     username: string
     constructor(private http: HttpClient) {
-        this.UpdatedUsersList$ = new Subject<User[]>();
         this.isLoading = false;
     }
     //for the log in component

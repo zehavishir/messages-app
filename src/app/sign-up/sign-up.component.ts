@@ -22,11 +22,8 @@ export class SignUpComponent implements OnInit {
   onSubmit(form:NgForm){
     const value = form.value;
     const newUser = {fullName: value.fullName, password: value.password}; 
-    this.userService.signUpUser = newUser;
-    this.userService.addUser(newUser);//adding a user to the ts array
+    this.userService.addUser(newUser);
     this.userService.username = value.fullName;
-    console.log(this.usersArray);
     this.router.navigate(['/messages']); 
-      
   }
 }

@@ -13,12 +13,12 @@ export class LogInComponent implements OnInit {
   form: NgForm;
   isClicked :boolean;
   isUserFound:boolean;
-  newArray: User[];
+  usersArray: User[];
   constructor(
     private userService: UserService,
     private router: Router) { 
       this.isClicked = false;
-      this.newArray = Users;
+      this.usersArray = Users;
       this.isUserFound = false;
     }
 
@@ -27,7 +27,7 @@ export class LogInComponent implements OnInit {
   onSubmit(form: NgForm) {
     const value = form.value;
     const newUser = {fullName: value.name, password: value.password};
-    if (this.userService.findUser(newUser, this.newArray)) {
+    if (this.userService.findUser(newUser, this.usersArray)) {
       this.isUserFound = true;
       this.userService.username = value.name;
     }
@@ -35,7 +35,6 @@ export class LogInComponent implements OnInit {
       this.isUserFound = false;
     }
     return this.isUserFound;
-    // console.log(this.isUserFound);
   }
 
   clickAndNavigate() {

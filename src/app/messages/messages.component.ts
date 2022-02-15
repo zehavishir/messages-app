@@ -10,7 +10,6 @@ import { Users } from '../users';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  chats: string[];
   isClicked: boolean;
   currUser: string;
   signedUpUser: User;
@@ -19,20 +18,17 @@ export class MessagesComponent implements OnInit {
 
   constructor(private userService: UserService,
     private http: HttpClient) {
-    this.chats = [];
     this.isClicked = false;
     this.currUser = '';
     this.users = Users;
-    this.signedUpUser = this.userService.signUpUser;//the user that signed up
+    this.signedUpUser = this.userService.signUpUser;
   }
   ngOnInit(): void {
     this.currUsersArray = this.users.filter(
       (user: User) => user.fullName != this.userService.username);
-      console.log(this.currUsersArray);
   }
 
   UserSelected(index: number) {
     this.currUser = this.currUsersArray[index].fullName;
-    console.log(this.currUser);
   }
 }
